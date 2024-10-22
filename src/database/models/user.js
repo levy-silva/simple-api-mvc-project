@@ -17,8 +17,7 @@ module.exports = (sequelize, DataTypes) => {
     name: {
       allowNull: false,
       validate: {
-        min: 3,
-        max: 20,
+        len: [3, 20],
         notNull: true,
         isAlpha: true,
       },
@@ -34,16 +33,13 @@ module.exports = (sequelize, DataTypes) => {
     role: {
       allowNull: false,
       validate: {
-        isIn: ["admin", "customer", "vendor"],
+        isIn: [["admin", "customer", "vendor"]],
       },
       type: DataTypes.STRING,
     },
     active: {
       allowNull: false,
-      validate: {
-        
-      },
-      type: DataTypes.BOOLEA,
+      type: DataTypes.BOOLEAN,
     },
   }, {
     sequelize,
