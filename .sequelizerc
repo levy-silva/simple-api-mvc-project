@@ -1,0 +1,9 @@
+import path from "path";
+
+export default {
+  config: path.resolve("src", "database", "config", "config.json"),
+  "models-path": path.resolve("src", "database", "models"),
+  "migrations-path": path.resolve("src", "database", "migrations"),
+  "seeders-path": path.resolve("src", "database", "seeders")
+}
+
