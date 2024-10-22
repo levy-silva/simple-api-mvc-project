@@ -14,13 +14,41 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   User.init({
-    name: DataTypes.STRING,
-    email: DataTypes.STRING,
-    role: DataTypes.STRING,
-    active: DataTypes.BOOLEAN
+    name: {
+      allowNull: false,
+      validate: {
+        min: 3,
+        max: 20,
+        notNull: true,
+        isAlpha: true,
+      },
+      type: DataTypes.STRING,
+    },
+    email: {
+      allowNull: false,
+      validate: {
+        isEmail: true,
+      },
+      type: DataTypes.STRING,
+    },
+    role: {
+      allowNull: false,
+      validate: {
+        isIn: ["admin", "customer", "vendor"],
+      },
+      type: DataTypes.STRING,
+    },
+    active: {
+      allowNull: false,
+      validate: {
+        
+      },
+      type: DataTypes.BOOLEA,
+    },
   }, {
     sequelize,
     modelName: 'User',
+    tableName: 'users',
   });
   return User;
 };
